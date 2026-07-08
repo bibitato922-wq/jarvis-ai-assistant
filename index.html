@@ -8,23 +8,36 @@
 </head>
 <body>
     <div class="container">
-        <!-- Main Visualization -->
+        <!-- Main Visualization with Flowing Lights -->
         <div class="visualization">
+            <div class="jarvis-title">J A R V I S</div>
+            
             <div class="glow-circle-container">
-                <div class="glow-circle outer"></div>
-                <div class="glow-circle middle"></div>
-                <div class="glow-circle inner"></div>
+                <!-- Flowing rings -->
+                <div class="flowing-ring ring-1"></div>
+                <div class="flowing-ring ring-2"></div>
+                <div class="flowing-ring ring-3"></div>
+                
+                <!-- Pulse rings -->
+                <div class="pulse-ring pulse-ring-1"></div>
+                <div class="pulse-ring pulse-ring-2"></div>
+                
+                <!-- Center glowing orb -->
                 <div class="center-orb"></div>
-                <div class="pulse-ring"></div>
+                
+                <!-- Orbiting particles -->
+                <div class="particles">
+                    <div class="particle type-1"></div>
+                    <div class="particle type-1"></div>
+                    <div class="particle type-2"></div>
+                    <div class="particle type-2"></div>
+                </div>
             </div>
             
-            <!-- Floating Particles -->
-            <div class="particles"></div>
-            
-            <!-- Status Indicator -->
+            <!-- Status indicator -->
             <div class="status-indicator">
                 <span class="status-dot"></span>
-                <span class="status-text">Ready</span>
+                <span class="status-text">SYSTEMS NOMINAL - STANDING BY, SIR.</span>
             </div>
         </div>
 
@@ -54,10 +67,10 @@
                     autocomplete="off"
                 >
                 <button id="sendBtn" class="btn btn-send" title="Send message">
-                    <span>→</span>
+                    →
                 </button>
                 <button id="voiceBtn" class="btn btn-voice" title="Start voice input">
-                    <span>🎤</span>
+                    🎤
                 </button>
             </div>
 
