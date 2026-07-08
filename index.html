@@ -5,26 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JARVIS - AI Assistant</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* SVG Animations - INLINE */
+        @keyframes rotate-cw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes rotate-ccw {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% {
+                r: 45;
+                filter: drop-shadow(0 0 20px #00d4ff);
+            }
+            50% {
+                r: 55;
+                filter: drop-shadow(0 0 40px #00d4ff);
+            }
+        }
+        
+        @keyframes orbit {
+            0% {
+                transform: translate(0, -150px) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(0, -150px) rotate(360deg);
+                opacity: 1;
+            }
+        }
+        
+        .ring1 {
+            animation: rotate-cw 20s linear infinite;
+            transform-origin: 200px 200px;
+        }
+        
+        .ring2 {
+            animation: rotate-ccw 15s linear infinite;
+            transform-origin: 200px 200px;
+        }
+        
+        .ring3 {
+            animation: rotate-cw 10s linear infinite;
+            transform-origin: 200px 200px;
+        }
+        
+        .center-orb {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .particle {
+            animation: orbit 10s linear infinite;
+            transform-origin: 200px 200px;
+        }
+    </style>
 </head>
 <body>
     <div class="main-container">
         <!-- Left Panel - Visualization -->
         <div class="left-panel">
             <div class="visualization">
-                <svg class="jarvis-animation" viewBox="0 0 400 400">
-                    <!-- Background circles -->
-                    <circle cx="200" cy="200" r="180" class="orbit-ring" style="animation-duration: 20s;"></circle>
-                    <circle cx="200" cy="200" r="130" class="orbit-ring" style="animation-duration: 15s; animation-direction: reverse;"></circle>
-                    <circle cx="200" cy="200" r="80" class="orbit-ring" style="animation-duration: 10s;"></circle>
+                <svg class="jarvis-animation" viewBox="0 0 400 400" width="300" height="300">
+                    <defs>
+                        <filter id="glow1">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <filter id="glow2">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
                     
-                    <!-- Pulsing center orb -->
-                    <circle cx="200" cy="200" r="50" class="center-orb"></circle>
+                    <!-- Rotating rings with colors -->
+                    <circle cx="200" cy="200" r="180" class="ring1" fill="none" stroke="#00d4ff" stroke-width="2" filter="url(#glow1)" opacity="0.6"></circle>
+                    <circle cx="200" cy="200" r="130" class="ring2" fill="none" stroke="#ff00ff" stroke-width="2" filter="url(#glow1)" opacity="0.5"></circle>
+                    <circle cx="200" cy="200" r="80" class="ring3" fill="none" stroke="#0099cc" stroke-width="2" filter="url(#glow1)" opacity="0.4"></circle>
+                    
+                    <!-- Center pulsing orb -->
+                    <circle cx="200" cy="200" r="45" class="center-orb" fill="#00d4ff" filter="url(#glow2)"></circle>
                     
                     <!-- Orbiting particles -->
-                    <circle cx="200" cy="200" r="4" class="particle" style="animation-delay: 0s;"></circle>
-                    <circle cx="200" cy="200" r="4" class="particle" style="animation-delay: 2.5s;"></circle>
-                    <circle cx="200" cy="200" r="4" class="particle" style="animation-delay: 5s;"></circle>
-                    <circle cx="200" cy="200" r="4" class="particle" style="animation-delay: 7.5s;"></circle>
+                    <g class="particle" style="animation-delay: 0s;">
+                        <circle cx="200" cy="50" r="5" fill="#00d4ff" filter="url(#glow2)"></circle>
+                    </g>
+                    <g class="particle" style="animation-delay: 2.5s;">
+                        <circle cx="200" cy="50" r="5" fill="#00d4ff" filter="url(#glow2)"></circle>
+                    </g>
+                    <g class="particle" style="animation-delay: 5s;">
+                        <circle cx="200" cy="50" r="5" fill="#ff00ff" filter="url(#glow2)"></circle>
+                    </g>
+                    <g class="particle" style="animation-delay: 7.5s;">
+                        <circle cx="200" cy="50" r="5" fill="#ff00ff" filter="url(#glow2)"></circle>
+                    </g>
                 </svg>
                 
                 <div class="title-overlay">
