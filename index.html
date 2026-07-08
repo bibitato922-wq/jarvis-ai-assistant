@@ -7,81 +7,58 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Main Visualization with Flowing Lights -->
-        <div class="visualization">
-            <div class="jarvis-title">J A R V I S</div>
-            
-            <div class="glow-circle-container">
-                <!-- Flowing rings -->
-                <div class="flowing-ring ring-1"></div>
-                <div class="flowing-ring ring-2"></div>
-                <div class="flowing-ring ring-3"></div>
+    <div class="main-container">
+        <!-- Left Panel - Visualization -->
+        <div class="left-panel">
+            <div class="visualization">
+                <svg class="jarvis-animation" viewBox="0 0 400 400">
+                    <!-- Background circles -->
+                    <circle cx="200" cy="200" r="180" class="orbit-ring" style="animation-duration: 20s;"></circle>
+                    <circle cx="200" cy="200" r="130" class="orbit-ring" style="animation-duration: 15s; animation-direction: reverse;"></circle>
+                    <circle cx="200" cy="200" r="80" class="orbit-ring" style="animation-duration: 10s;"></circle>
+                    
+                    <!-- Pulsing center orb -->
+                    <circle cx="200" cy="200" r="50" class="center-orb"></circle>
+                    
+                    <!-- Orbiting particles -->
+                    <circle cx="200" cy="200" r="4" class="particle" style="animation-delay: 0s;"></circle>
+                    <circle cx="200" cy="200" r="4" class="particle" style="animation-delay: 2.5s;"></circle>
+                    <circle cx="200" cy="200" r="4" class="particle" style="animation-delay: 5s;"></circle>
+                    <circle cx="200" cy="200" r="4" class="particle" style="animation-delay: 7.5s;"></circle>
+                </svg>
                 
-                <!-- Pulse rings -->
-                <div class="pulse-ring pulse-ring-1"></div>
-                <div class="pulse-ring pulse-ring-2"></div>
-                
-                <!-- Center glowing orb -->
-                <div class="center-orb"></div>
-                
-                <!-- Orbiting particles -->
-                <div class="particles">
-                    <div class="particle type-1"></div>
-                    <div class="particle type-1"></div>
-                    <div class="particle type-2"></div>
-                    <div class="particle type-2"></div>
+                <div class="title-overlay">
+                    <h1>J A R V I S</h1>
+                    <p>Systems Nominal</p>
                 </div>
-            </div>
-            
-            <!-- Status indicator -->
-            <div class="status-indicator">
-                <span class="status-dot"></span>
-                <span class="status-text">SYSTEMS NOMINAL - STANDING BY, SIR.</span>
             </div>
         </div>
 
-        <!-- Control Panel -->
-        <div class="control-panel">
-            <h1>JARVIS</h1>
-            <p class="subtitle">Advanced AI Assistant</p>
+        <!-- Right Panel - Control -->
+        <div class="right-panel">
+            <div class="header">
+                <h2>JARVIS</h2>
+                <p>Advanced AI Assistant</p>
+                <div class="status-bar">
+                    <span class="status-light"></span>
+                    <span>Ready</span>
+                </div>
+            </div>
 
-            <!-- Chat Display -->
-            <div class="chat-container">
-                <div class="chat-messages" id="chatMessages">
-                    <div class="message assistant">
-                        <div class="message-content">
-                            Hello! I'm JARVIS, your AI assistant. How can I help you today?
-                        </div>
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="messages" id="messages">
+                    <div class="message bot">
+                        <div class="message-bubble">Hello! I'm JARVIS. How can I assist you today?</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Input Controls -->
-            <div class="input-section">
-                <input 
-                    type="text" 
-                    id="userInput" 
-                    class="chat-input" 
-                    placeholder="Type your message or click the mic..."
-                    autocomplete="off"
-                >
-                <button id="sendBtn" class="btn btn-send" title="Send message">
-                    →
-                </button>
-                <button id="voiceBtn" class="btn btn-voice" title="Start voice input">
-                    🎤
-                </button>
-            </div>
-
-            <!-- Voice Status -->
-            <div class="voice-status" id="voiceStatus" style="display: none;">
-                <div class="listening-indicator">
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-                <p>Listening...</p>
+            <!-- Input Area -->
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="Ask me anything..." class="input-field">
+                <button id="sendBtn" class="send-btn">Send</button>
+                <button id="voiceBtn" class="voice-btn">🎤</button>
             </div>
 
             <!-- Quick Actions -->
@@ -91,29 +68,33 @@
                 <button class="quick-btn" data-action="joke">😄 Joke</button>
                 <button class="quick-btn" data-action="quote">💡 Quote</button>
             </div>
-        </div>
 
-        <!-- Settings Panel -->
-        <div class="settings-panel">
-            <button id="settingsBtn" class="settings-btn">⚙️</button>
-            <div class="settings-menu" id="settingsMenu" style="display: none;">
-                <div class="setting">
-                    <label>Volume</label>
-                    <input type="range" id="volumeControl" min="0" max="100" value="70">
-                </div>
-                <div class="setting">
-                    <label>Theme</label>
-                    <select id="themeSelect">
-                        <option value="dark">Dark</option>
-                        <option value="light">Light</option>
-                        <option value="neon">Neon</option>
-                    </select>
-                </div>
-                <div class="setting">
-                    <label>
-                        <input type="checkbox" id="autoSpeak" checked>
-                        Auto Voice Response
-                    </label>
+            <!-- Settings Section -->
+            <div class="settings-section">
+                <button id="settingsToggle" class="settings-toggle">⚙️ Settings</button>
+                <div class="settings-panel" id="settingsPanel" style="display: none;">
+                    <div class="setting-item">
+                        <label>API Key (API Ninjas)</label>
+                        <input type="password" id="apiKey" placeholder="Enter your API key here" class="api-input">
+                        <small>Get free key at api-ninjas.com</small>
+                    </div>
+                    <div class="setting-item">
+                        <label>Volume</label>
+                        <input type="range" id="volume" min="0" max="100" value="70" class="slider">
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" id="autoSpeak" checked>
+                            Auto Voice Response
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>Theme</label>
+                        <select id="theme" class="theme-select">
+                            <option value="dark">Dark</option>
+                            <option value="neon">Neon</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
