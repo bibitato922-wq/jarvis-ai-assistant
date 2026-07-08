@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS - AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Visualization -->
+        <div class="visualization">
+            <div class="glow-circle-container">
+                <div class="glow-circle outer"></div>
+                <div class="glow-circle middle"></div>
+                <div class="glow-circle inner"></div>
+                <div class="center-orb"></div>
+                <div class="pulse-ring"></div>
+            </div>
+            
+            <!-- Floating Particles -->
+            <div class="particles"></div>
+            
+            <!-- Status Indicator -->
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Ready</span>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <h1>JARVIS</h1>
+            <p class="subtitle">Advanced AI Assistant</p>
+
+            <!-- Chat Display -->
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message assistant">
+                        <div class="message-content">
+                            Hello! I'm JARVIS, your AI assistant. How can I help you today?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Controls -->
+            <div class="input-section">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    class="chat-input" 
+                    placeholder="Type your message or click the mic..."
+                    autocomplete="off"
+                >
+                <button id="sendBtn" class="btn btn-send" title="Send message">
+                    <span>→</span>
+                </button>
+                <button id="voiceBtn" class="btn btn-voice" title="Start voice input">
+                    <span>🎤</span>
+                </button>
+            </div>
+
+            <!-- Voice Status -->
+            <div class="voice-status" id="voiceStatus" style="display: none;">
+                <div class="listening-indicator">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <p>Listening...</p>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="quick-btn" data-action="weather">🌤️ Weather</button>
+                <button class="quick-btn" data-action="time">⏰ Time</button>
+                <button class="quick-btn" data-action="joke">😄 Joke</button>
+                <button class="quick-btn" data-action="quote">💡 Quote</button>
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <button id="settingsBtn" class="settings-btn">⚙️</button>
+            <div class="settings-menu" id="settingsMenu" style="display: none;">
+                <div class="setting">
+                    <label>Volume</label>
+                    <input type="range" id="volumeControl" min="0" max="100" value="70">
+                </div>
+                <div class="setting">
+                    <label>Theme</label>
+                    <select id="themeSelect">
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                        <option value="neon">Neon</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label>
+                        <input type="checkbox" id="autoSpeak" checked>
+                        Auto Voice Response
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
